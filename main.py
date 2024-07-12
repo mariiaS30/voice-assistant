@@ -1,9 +1,14 @@
 import speech_recognition
 import pyaudio
 import webbrowser
+import pyttsx3
+
 
 sr = speech_recognition.Recognizer()
 mic = speech_recognition.Microphone()
+voice = pyttsx3.init()
+voice.setProperty('rate', 130)
+
 
 with mic:
     request = sr.listen(source = mic) #voice
@@ -11,18 +16,20 @@ with mic:
     print(text)
 
 if text == 'open google' or text == 'open google please' or text == 'please open google':
-    print('okay')
+    voice.say('okay')
+    voice.runAndWait()
     webbrowser.open('https://www.google.co.uk/')
 
 elif text == 'open youtube' or text == 'please open youtube' or text == 'open youtube please':
-    print('okay')
+    voice.say('okay')
+    voice.runAndWait()
     webbrowser.open('https://www.youtube.com/')
 
 elif text == 'voice hello':
-    print('Hello')
+    voice.say('Hello')
+    voice.runAndWait()
 
 
 #webbrowser.open('https://www.youtube.com/')
-
-#assist has a voice 
+ 
 
